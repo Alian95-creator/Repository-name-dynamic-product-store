@@ -1,8 +1,11 @@
 const productContainer = document.getElementById("productContainer")
+const searchInput = document.getElementById("searchInput")
 
-fetch("https://fakestoreapi.com/products")
-.then(res => res.json())
-.then(products => {
+let allProducts = []
+
+function renderProducts(products){
+
+productContainer.innerHTML = ""
 
 products.forEach(product => {
 
@@ -19,5 +22,14 @@ card.innerHTML = `
 productContainer.appendChild(card)
 
 })
+
+}
+
+fetch("https://fakestoreapi.com/products")
+.then(res => res.json())
+.then(data => {
+
+allProducts = data
+renderProducts(allProducts)
 
 })
