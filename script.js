@@ -33,3 +33,15 @@ allProducts = data
 renderProducts(allProducts)
 
 })
+
+searchInput.addEventListener("input", function(){
+
+const keyword = this.value.toLowerCase()
+
+const filtered = allProducts.filter(product =>
+product.title.toLowerCase().includes(keyword)
+)
+
+renderProducts(filtered)
+
+})
