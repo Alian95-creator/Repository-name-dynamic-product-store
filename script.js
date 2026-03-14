@@ -28,6 +28,8 @@ productContainer.appendChild(card)
 
 function renderCategories(products){
 
+categoryFilter.innerHTML = '<option value="all">All Categories</option>'
+
 const categories = [...new Set(products.map(p => p.category))]
 
 categories.forEach(category => {
@@ -42,15 +44,36 @@ categoryFilter.appendChild(option)
 })
 
 }
+productContainer.innerHTML = "<p>Loading products...</p>"
 
 fetch("https://fakestoreapi.com/products")
-.then(res => res.json())
+.then(res => {
+
+if(!res.ok){
+throw new Error("Network response not ok")
+}
+
+return res.json()
+
+})
 .then(data => {
 
 allProducts = data
 
 renderCategories(allProducts)
 renderProducts(allProducts)
+
+})
+.catch(error => {
+
+console.error(error)
+productContainer.innerHTML = "<p>Failed to load products</p>"
+
+})
+
+.catch(error => {
+
+console.error(error)
 
 })
 
