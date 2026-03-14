@@ -1,25 +1,51 @@
 # Dynamic Product Store
 
-Simple dynamic product list built with JavaScript.
+A small frontend project that displays a dynamic product list using JavaScript and an external API.
+The application fetches product data and renders product cards dynamically in the browser.
+
+## Live Demo
+
+https://alian95-creator.github.io/Repository-name-dynamic-product-store/
 
 ## Features
 
-- Fetch product data from API
-- Render product dynamically
-- Realtime search
+* Fetch product data from external API
+* Dynamic product rendering using JavaScript DOM
+* Realtime product search
+* Product category filtering
+* Responsive layout for mobile devices
+* Hover interaction and image zoom effect
+* Animated "Buy" button
 
 ## Tech Stack
 
-- HTML
-- CSS
-- JavaScript
-- Fetch API
+* HTML
+* CSS
+* JavaScript (Vanilla JS)
+* Fetch API
 
-## API
+## API Source
+
+Product data is provided by:
 
 https://fakestoreapi.com/
 
-## How to run
+## What I Learned
 
-1. Clone repository
-2. click here https://alian95-creator.github.io/Repository-name-dynamic-product-store/
+Through this project I practiced:
+
+* Fetching and handling API data
+* DOM manipulation in JavaScript
+* Filtering data using JavaScript array methods
+* Creating dynamic UI components
+* Building responsive layouts with CSS
+
+## How to Run Locally
+
+1. Clone this repository
+
+2. Open the project folder
+
+3. Open `index.html` in your browser
+
+Or visit the live demo link above.
