@@ -1,5 +1,6 @@
 const productContainer = document.getElementById("productContainer")
 const searchInput = document.getElementById("searchInput")
+const categoryFilter = document.getElementById("categoryFilter")
 
 let allProducts = []
 
@@ -25,11 +26,30 @@ productContainer.appendChild(card)
 
 }
 
+function renderCategories(products){
+
+const categories = [...new Set(products.map(p => p.category))]
+
+categories.forEach(category => {
+
+const option = document.createElement("option")
+
+option.value = category
+option.textContent = category
+
+categoryFilter.appendChild(option)
+
+})
+
+}
+
 fetch("https://fakestoreapi.com/products")
 .then(res => res.json())
 .then(data => {
 
 allProducts = data
+
+renderCategories(allProducts)
 renderProducts(allProducts)
 
 })
@@ -40,6 +60,23 @@ const keyword = this.value.toLowerCase()
 
 const filtered = allProducts.filter(product =>
 product.title.toLowerCase().includes(keyword)
+)
+
+renderProducts(filtered)
+
+})
+
+categoryFilter.addEventListener("change", function(){
+
+const selected = this.value
+
+if(selected === "all"){
+renderProducts(allProducts)
+return
+}
+
+const filtered = allProducts.filter(product =>
+product.category === selected
 )
 
 renderProducts(filtered)
