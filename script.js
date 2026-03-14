@@ -15,9 +15,12 @@ const card = document.createElement("div")
 card.classList.add("product-card")
 
 card.innerHTML = `
-<img src="${product.image}">
+<div class="img-wrapper">
+  <img src="${product.image}" alt="${product.title}">
+</div>
 <h3>${product.title}</h3>
-<p>$${product.price}</p>
+<p class="price">$${product.price.toFixed(2)}</p>
+<button class="buy-btn">Buy</button>
 `
 
 productContainer.appendChild(card)
