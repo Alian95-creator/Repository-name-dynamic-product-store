@@ -22,4 +22,4 @@ https://fakestoreapi.com/
 ## How to run
 
 1. Clone repository
-2. Open index.html in browser
+2. click hire https://alian95-creator.github.io/Repository-name-dynamic-product-store/
