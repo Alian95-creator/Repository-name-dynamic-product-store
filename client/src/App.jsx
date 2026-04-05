@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import CartPage from "./pages/CartPage";
 import ProductModal from "./components/ProductModal";
 import Cart from "./components/Cart";
+import ThemeToggle from "./components/ThemeToggle";
 
 function App() {
   const darkMode = useProductStore((s) => s.darkMode);

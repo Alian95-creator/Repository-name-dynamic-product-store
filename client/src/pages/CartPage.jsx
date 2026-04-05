@@ -6,7 +6,7 @@ const CartPage = () => {
   const total = getTotalPrice();
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
+    <div className="max-w-4xl mx-auto p-6 bg-white dark:bg-gray-800 text-gray-800 dark:text-white rounded-xl">
       <h2 className="text-2xl font-bold mb-6">🛒 Your Cart</h2>
 
       {cart.length === 0 ? (
@@ -16,7 +16,7 @@ const CartPage = () => {
           {cart.map((item) => (
             <div
               key={item.id}
-              className="flex items-center gap-4 bg-white p-4 rounded-xl shadow"
+              className="flex items-center gap-4 bg-white dark:bg-gray-700 p-4 rounded-xl shadow"
             >
               <img
                 src={item.thumbnail}
@@ -47,7 +47,7 @@ const CartPage = () => {
 
       {/* TOTAL */}
       {cart.length > 0 && (
-        <div className="mt-6 p-4 bg-white rounded-xl shadow">
+        <div className="mt-6 p-4 bg-white dark:bg-gray-700 rounded-xl shadow">
           <h3 className="text-lg font-bold">
             Total: ${total.toFixed(2)}
           </h3>
@@ -57,7 +57,7 @@ const CartPage = () => {
           </button>
         </div>
       )}
-        <div className="mt-6 bg-white p-4 rounded-xl shadow">
+        <div className="mt-6 bg-white dark:bg-gray-700 p-4 rounded-xl shadow">
           <h3 className="font-bold mb-3">Checkout Info</h3>
 
         <input

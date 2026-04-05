@@ -6,7 +6,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <motion.div
-      className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition cursor-pointer"
+      className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 overflow-hidden group"
       whileHover={{ scale: 1.04 }}
       onClick={() => openProduct(product)}
     >
@@ -17,11 +17,11 @@ const ProductCard = ({ product }) => {
           className="w-full h-48 object-cover rounded-lg"
         />
 
-        <h3 className="mt-3 text-sm font-semibold line-clamp-2">
+        <h3 className="mt-3 text-sm font-semibold line-clamp-2 text-gray-800 dark:text-white">
           {product.title}
         </h3>
 
-        <p className="text-lg font-bold mt-2">
+        <p className="text-lg font-bold mt-2 text-gray-900 dark:text-gray-200">
           ${product.price}
         </p>
       </div>
