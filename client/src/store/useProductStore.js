@@ -80,8 +80,13 @@ export const useProductStore = create((set, get) => ({
    });
   },
 
-getTotalPrice: () => {
+  getTotalPrice: () => {
   const { cart } = get();
   return cart.reduce((acc, item) => acc + item.price * item.qty, 0);
   },
+
+  darkMode: false,
+
+  toggleDarkMode: () =>
+  set((state) => ({ darkMode: !state.darkMode })),
 }));
