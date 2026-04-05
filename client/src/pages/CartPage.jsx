@@ -57,6 +57,22 @@ const CartPage = () => {
           </button>
         </div>
       )}
+        <div className="mt-6 bg-white p-4 rounded-xl shadow">
+          <h3 className="font-bold mb-3">Checkout Info</h3>
+
+        <input
+            placeholder="Full Name"
+            className="w-full p-2 border rounded mb-2"
+        />
+        <input
+            placeholder="Address"
+            className="w-full p-2 border rounded mb-2"
+        />
+
+        <button className="w-full bg-green-600 text-white py-3 rounded-lg">
+             Place Order
+        </button>
+      </div>
     </div>
   );
 };
