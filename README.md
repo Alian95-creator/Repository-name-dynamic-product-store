@@ -28,7 +28,7 @@ https://alian95-creator.github.io/Repository-name-dynamic-product-store/
 
 Product data is provided by:
 
-https://fakestoreapi.com/
+https://dummyjson.com/products
 
 ## What I Learned
 
