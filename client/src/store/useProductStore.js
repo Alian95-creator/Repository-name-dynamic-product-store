@@ -1,32 +1,75 @@
 import { create } from "zustand";
 import { getProducts } from "../services/productService";
 
-export const useProductStore = create((set) => ({
+export const useProductStore = create((set, get) => ({
   products: [],
   filtered: [],
+  loading: false,
+
   search: "",
   category: "all",
 
+  cart: [],
+  selectedProduct: null,
+
+  // FETCH
   fetchProducts: async () => {
+    set({ loading: true });
+
     const data = await getProducts();
-    set({ products: data, filtered: data });
+
+    set({
+      products: data,
+      filtered: data,
+      loading: false,
+    });
   },
 
-  setSearch: (value) =>
-    set((state) => {
-      const filtered = state.products.filter((p) =>
-        p.title.toLowerCase().includes(value.toLowerCase())
-      );
-      return { search: value, filtered };
-    }),
+  // SEARCH
+  setSearch: (value) => {
+    const { products } = get();
 
-  setCategory: (value) =>
-    set((state) => {
-      const filtered =
-        value === "all"
-          ? state.products
-          : state.products.filter((p) => p.category === value);
+    const filtered = products.filter((p) =>
+      p.title.toLowerCase().includes(value.toLowerCase())
+    );
 
-      return { category: value, filtered };
-    }),
+    set({ search: value, filtered });
+  },
+
+  // CATEGORY
+  setCategory: (value) => {
+    const { products } = get();
+
+    const filtered =
+      value === "all"
+        ? products
+        : products.filter((p) => p.category === value);
+
+    set({ category: value, filtered });
+  },
+
+  // MODAL
+  openProduct: (product) => set({ selectedProduct: product }),
+  closeProduct: () => set({ selectedProduct: null }),
+
+  // CART
+  addToCart: (product) => {
+    const { cart } = get();
+
+    const exists = cart.find((item) => item.id === product.id);
+
+    if (exists) {
+      set({
+        cart: cart.map((item) =>
+          item.id === product.id
+            ? { ...item, qty: item.qty + 1 }
+            : item
+        ),
+      });
+    } else {
+      set({
+        cart: [...cart, { ...product, qty: 1 }],
+      });
+    }
+  },
 }));
