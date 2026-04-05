@@ -72,4 +72,16 @@ export const useProductStore = create((set, get) => ({
       });
     }
   },
+
+  removeFromCart: (id) => {
+  const { cart } = get();
+  set({
+    cart: cart.filter((item) => item.id !== id),
+   });
+  },
+
+getTotalPrice: () => {
+  const { cart } = get();
+  return cart.reduce((acc, item) => acc + item.price * item.qty, 0);
+  },
 }));
