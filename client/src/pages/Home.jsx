@@ -21,16 +21,15 @@ const Home = () => {
     ...new Set(products.map((p) => p.category)),
   ];
 
-<q></q>
 
   return (
     <div>
       {/* FILTER BAR */}
-      <div className="bg-white p-4 rounded-xl shadow-sm mb-6 flex flex-col md:flex-row gap-4">
+      <div className="bg-dark/80 backdrop-blur-xl p-4 rounded-2xl mb-6 flex flex-col md:flex-row gap-4 border border-white/10">
         <input
           type="text"
           placeholder="Search product..."
-          className="flex-1 p-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-black/20"
+          className="p-3 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-primary"
           onChange={(e) => setSearch(e.target.value)}
         />
 
@@ -58,8 +57,14 @@ const Home = () => {
         animate={{ opacity: 1 }}
       >
         {filtered.map((p) => (
-          <ProductCard key={p.id} product={p} />
-        ))}
+      <ProductCard
+        key={p.id}
+        image={p.image}
+        title={p.title}
+        price={p.price}
+        onAddToCart={() => console.log("Add to cart:", p)}
+      />
+    ))}
       </motion.div>
     </div>
   );

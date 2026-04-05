@@ -1,31 +1,41 @@
-import { motion } from "framer-motion";
-import { useProductStore } from "../store/useProductStore";
+import React from "react";
 
-const ProductCard = ({ product }) => {
-  const openProduct = useProductStore((s) => s.openProduct);
-
+const ProductCard = ({ image, title, price, onAddToCart }) => {
   return (
-    <motion.div
-      className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 overflow-hidden group"
-      whileHover={{ scale: 1.04 }}
-      onClick={() => openProduct(product)}
-    >
-      <div className="p-4">
-        <img
-          src={product.thumbnail}
-          alt={product.title}
-          className="w-full h-48 object-cover rounded-lg"
-        />
-
-        <h3 className="mt-3 text-sm font-semibold line-clamp-2 text-gray-800 dark:text-white">
-          {product.title}
-        </h3>
-
-        <p className="text-lg font-bold mt-2 text-gray-900 dark:text-gray-200">
-          ${product.price}
-        </p>
+    <div className="group relative rounded-2xl p-[1px] bg-gradient-main transition-all duration-300 ease-smooth hover:scale-[1.02]">
+      
+      {/* Glow Effect */}
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500">
+        <div className="w-full h-full bg-gradient-main blur-2xl"></div>
       </div>
-    </motion.div>
+
+      {/* Card Content */}
+      <div className="relative rounded-2xl bg-dark/90 backdrop-blur-xl p-4 h-full flex flex-col justify-between hover:shadow-glow transition-all duration-300">
+        
+        {/* Image */}
+        <div className="overflow-hidden rounded-xl">
+          <img
+            src={image}
+            alt={title}
+            className="w-full h-40 object-cover transition-transform duration-500 ease-smooth group-hover:scale-110"
+          />
+        </div>
+
+        {/* Info */}
+        <div className="mt-4">
+          <h3 className="text-lg font-semibold">{title}</h3>
+          <p className="text-sm text-gray-400">Rp {price}</p>
+        </div>
+
+        {/* Button */}
+        <button
+          onClick={onAddToCart}
+          className="mt-4 bg-gradient-main text-white py-2 rounded-xl font-semibold tracking-wide transition-all duration-300 hover:shadow-glow hover:scale-105 active:scale-95"
+        >
+          Add to Cart
+        </button>
+      </div>
+    </div>
   );
 };
 
