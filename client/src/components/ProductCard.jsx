@@ -1,37 +1,29 @@
 import { motion } from "framer-motion";
+import { useProductStore } from "../store/useProductStore";
 
 const ProductCard = ({ product }) => {
+  const openProduct = useProductStore((s) => s.openProduct);
+
   return (
     <motion.div
-      className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group"
+      className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition cursor-pointer"
       whileHover={{ scale: 1.04 }}
+      onClick={() => openProduct(product)}
     >
-      {/* IMAGE */}
-      <div className="overflow-hidden">
+      <div className="p-4">
         <img
           src={product.thumbnail}
           alt={product.title}
-          onError={(e) => {
-            e.target.src = "https://via.placeholder.com/300";
-          }}
-          className="w-full h-48 object-cover group-hover:scale-110 transition duration-300"
+          className="w-full h-48 object-cover rounded-lg"
         />
-      </div>
 
-      {/* CONTENT */}
-      <div className="p-4">
-        <h3 className="text-sm font-semibold line-clamp-2 min-h-[40px]">
+        <h3 className="mt-3 text-sm font-semibold line-clamp-2">
           {product.title}
         </h3>
 
-        <p className="text-lg font-bold mt-2 text-gray-900">
+        <p className="text-lg font-bold mt-2">
           ${product.price}
         </p>
-
-        {/* BUTTON */}
-        <button className="mt-4 w-full bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition">
-          Buy Now
-        </button>
       </div>
     </motion.div>
   );
