@@ -12,6 +12,8 @@ export const useProductStore = create((set, get) => ({
   cart: [],
   selectedProduct: null,
 
+  darkMode: false,
+
   // FETCH
   fetchProducts: async () => {
     set({ loading: true });
@@ -53,40 +55,35 @@ export const useProductStore = create((set, get) => ({
   closeProduct: () => set({ selectedProduct: null }),
 
   // CART
-  addToCart: (product) => {
-    const { cart } = get();
+  addToCart: (product) =>
+    set((state) => {
+      const exist = state.cart.find((item) => item.id === product.id);
 
-    const exists = cart.find((item) => item.id === product.id);
+      if (exist) {
+        return {
+          cart: state.cart.map((item) =>
+            item.id === product.id
+              ? { ...item, qty: item.qty + 1 }
+              : item
+          ),
+        };
+      }
 
-    if (exists) {
-      set({
-        cart: cart.map((item) =>
-          item.id === product.id
-            ? { ...item, qty: item.qty + 1 }
-            : item
-        ),
-      });
-    } else {
-      set({
-        cart: [...cart, { ...product, qty: 1 }],
-      });
-    }
-  },
+      return {
+        cart: [...state.cart, { ...product, qty: 1 }],
+      };
+    }),
 
-  removeFromCart: (id) => {
-  const { cart } = get();
-  set({
-    cart: cart.filter((item) => item.id !== id),
-   });
-  },
+  removeFromCart: (id) =>
+    set((state) => ({
+      cart: state.cart.filter((item) => item.id !== id),
+    })),
 
   getTotalPrice: () => {
-  const { cart } = get();
-  return cart.reduce((acc, item) => acc + item.price * item.qty, 0);
+    const { cart } = get();
+    return cart.reduce((acc, item) => acc + item.price * item.qty, 0);
   },
 
-  darkMode: false,
-
   toggleDarkMode: () =>
-  set((state) => ({ darkMode: !state.darkMode })),
+    set((state) => ({ darkMode: !state.darkMode })),
 }));

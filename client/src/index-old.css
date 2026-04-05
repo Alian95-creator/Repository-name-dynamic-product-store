@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* BASE STYLE */
+@layer base {
+  body {
+    @apply bg-gray-100 text-gray-800;
+  }
+}
+
+/* REUSABLE */
+@layer components {
+  .container-app {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}

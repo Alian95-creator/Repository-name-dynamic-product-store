@@ -10,6 +10,8 @@ const Home = () => {
     setSearch,
     setCategory,
     products,
+    addToCart,
+    openProduct,
   } = useProductStore();
 
   useEffect(() => {
@@ -20,7 +22,6 @@ const Home = () => {
     "all",
     ...new Set(products.map((p) => p.category)),
   ];
-
 
   return (
     <div>
@@ -34,11 +35,13 @@ const Home = () => {
         />
 
         <select
-          className="p-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-black/20"
+          className="p-3 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-primary"
           onChange={(e) => setCategory(e.target.value)}
         >
           {categories.map((cat) => (
-            <option key={cat}>{cat}</option>
+            <option key={cat} value={cat}>
+              {cat}
+            </option>
           ))}
         </select>
       </div>
@@ -57,18 +60,18 @@ const Home = () => {
         animate={{ opacity: 1 }}
       >
         {filtered.map((p) => (
-      <ProductCard
-        key={p.id}
-        image={p.image}
-        title={p.title}
-        price={p.price}
-        onAddToCart={() => console.log("Add to cart:", p)}
-      />
-    ))}
+          <ProductCard
+            key={p.id}
+            image={p.images?.[0]}
+            title={p.title}
+            price={p.price}
+            onAddToCart={() => addToCart(p)}
+            onClick={() => openProduct(p)}
+          />
+        ))}
       </motion.div>
     </div>
   );
 };
-
 
 export default Home;
