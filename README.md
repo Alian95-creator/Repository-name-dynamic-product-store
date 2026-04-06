@@ -1,51 +1,26 @@
-# Dynamic Product Store
+# 🛍️ Dynamic Product Store
 
-A small frontend project that displays a dynamic product list using JavaScript and an external API.
-The application fetches product data and renders product cards dynamically in the browser.
+This is a **modern e-commerce frontend** built with **React**, **Vite**, **Tailwind CSS**, and **Zustand**. It features a clean, ultra-premium UI with smooth micro-interactions and dark mode support.
 
-## Live Demo
+**Live Demo:** [Dynamic Product Store](https://alian95-creator.github.io/Repository-name-dynamic-product-store/)
 
-https://alian95-creator.github.io/Repository-name-dynamic-product-store/
+---
 
-## Features
+## Features ✨
 
-* Fetch product data from external API
-* Dynamic product rendering using JavaScript DOM
-* Realtime product search
-* Product category filtering
-* Responsive layout for mobile devices
-* Hover interaction and image zoom effect
-* Animated "Buy" button
+- **React + Vite:** Fast development with hot module replacement.
+- **Responsive UI:** Fully responsive grid and components for mobile and desktop.
+- **Product Modal:** Click a product to view details in a smooth modal.
+- **Cart Management:** Add, remove, and adjust quantities using Zustand store.
+- **Dark Mode Toggle:** Switch between light and dark themes seamlessly.
+- **Premium Design:** Gradient backgrounds, glow hover effects, and subtle animations.
+- **Filter & Search:** Easily filter products by category or search by title.
 
-## Tech Stack
+---
 
-* HTML
-* CSS
-* JavaScript (Vanilla JS)
-* Fetch API
+## Installation
 
-## API Source
+1. Clone the repository:
 
-Product data is provided by:
-
-https://dummyjson.com/products
-
-## What I Learned
-
-Through this project I practiced:
-
-* Fetching and handling API data
-* DOM manipulation in JavaScript
-* Filtering data using JavaScript array methods
-* Creating dynamic UI components
-* Building responsive layouts with CSS
-
-## How to Run Locally
-
-1. Clone this repository
-
-2. Open the project folder
-
-3. Open `index.html` in your browser
-
-Or visit the live demo link above.
+```bash
+git clone https://github.com/Alian95-creator/Repository-name-dynamic-product-store.git
